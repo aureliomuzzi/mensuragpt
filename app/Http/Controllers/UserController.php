@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
 use App\DataTables\UserDataTable;
 
 class UserController extends Controller
@@ -35,10 +34,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
         $dados = [
             'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'status' => $request->status == '1' ? 1 : 0
@@ -84,6 +84,7 @@ class UserController extends Controller
     {
         $dados = [
             'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password ? bcrypt($request->password) : $user->password,
             'status' => $request->status == '' ? 0 : 1

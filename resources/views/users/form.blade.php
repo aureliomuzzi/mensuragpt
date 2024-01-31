@@ -49,6 +49,10 @@
                                     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nome do Usuario']) !!}
                                 </div>
                                 <div class="form-group">
+                                    {!! Form::label('username', 'Username') !!}
+                                    {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Nome para fazer Login']) !!}
+                                </div>
+                                <div class="form-group">
                                     {!! Form::label('email', 'Email') !!}
                                     {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email do Usuario']) !!}
                                 </div>
