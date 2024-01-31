@@ -49,7 +49,7 @@
                                     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nome do Usuario']) !!}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::label('username', 'Username') !!}
+                                    {!! Form::label('username', 'Login') !!}
                                     {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Nome para fazer Login']) !!}
                                 </div>
                                 <div class="form-group">
@@ -67,6 +67,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
+                        @component('components.perfil', ['perfil' => isset($user) && $user->perfil == 1 ? 1 : 2])@endcomponent
                         @component('components.status', ['status' => isset($user) && $user->status == 1 ? 1 : 0])@endcomponent
                     </div>
                 </div>

@@ -33,9 +33,9 @@ class UserDataTable extends DataTable
             })
             ->editColumn('perfil', function($query) {
                 if ($query->perfil == 1) {
-                    return '<span class="badge badge-primary"> Administrador </span>';
+                    return '<span class="badge badge-dark"> Administrador </span>';
                 } else {
-                    return '<span class="badge badge-danger"> Usuário </span>';
+                    return '<span class="badge badge-warning"> Usuário </span>';
                 }
             })
             ->editColumn('status', function($query) {

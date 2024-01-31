@@ -13,6 +13,12 @@ $(function () {
         on: 'Ativo',
         off: 'Inativo'
     });
+
+    $('#perfil').bootstrapToggle({
+        on: 'Administrador',
+        off: 'Usuário'
+    });
+
     // Validando CPF
     $('#cpf').change(function() {
         let cpf = validarCPF($(this).val());

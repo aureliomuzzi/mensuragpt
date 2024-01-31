@@ -39,6 +39,7 @@ class UserController extends Controller
         $dados = [
             'name' => $request->name,
             'username' => $request->username,
+            'perfil' => $request->perfil == '1' ? 1 : 2,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'status' => $request->status == '1' ? 1 : 0
@@ -85,6 +86,7 @@ class UserController extends Controller
         $dados = [
             'name' => $request->name,
             'username' => $request->username,
+            'perfil' => $request->perfil == '1' ? 1 : 2,
             'email' => $request->email,
             'password' => $request->password ? bcrypt($request->password) : $user->password,
             'status' => $request->status == '' ? 0 : 1

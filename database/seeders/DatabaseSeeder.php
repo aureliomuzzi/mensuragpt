@@ -33,6 +33,15 @@ class DatabaseSeeder extends Seeder
             'status' => 1
         ]);
 
+        User::create([
+            'name' => 'Professor Gilbert',
+            'username' => 'gilbert',
+            'perfil' => 1,
+            'email' => 'gilbert@ifam.edu.br',
+            'password' => Hash::make('123'),
+            'status' => 1
+        ]);
+
         User::factory(20)->create();
     }
 }
