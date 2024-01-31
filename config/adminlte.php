@@ -294,7 +294,12 @@ return [
             'text'        => 'Usuários',
             'url'         => 'users',
             'icon'        => 'fas fa-user',
-        ],        
+        ],
+        [
+            'text'        => 'Cadastro de Questões',
+            'url'         => 'questions',
+            'icon'        => 'fas fa-book',
+        ],  
     ],
 
     /*

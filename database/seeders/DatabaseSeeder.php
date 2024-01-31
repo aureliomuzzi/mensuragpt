@@ -24,6 +24,15 @@ class DatabaseSeeder extends Seeder
             'status' => 1
         ]);
 
+        User::create([
+            'name' => 'Evelen Helena',
+            'username' => 'evelen',
+            'perfil' => 1,
+            'email' => 'evenlenhelena@gmail.com',
+            'password' => Hash::make('123'),
+            'status' => 1
+        ]);
+
         User::factory(20)->create();
     }
 }
