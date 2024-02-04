@@ -16,7 +16,8 @@
 <li>JavaScript e jQuery: Tecnologias essenciais para interatividade e manipulação do lado do cliente.</li>
 
 <li> Instale o XAMPP desse link pois já vem com todos os componentes necessários para rodar o projeto (https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.33/) </li>
- ![alt text](image.png)
+
+![Screenshot_2](https://github.com/aureliomuzzi/mensuragpt/assets/22358853/2cc23848-44fd-4226-a51b-34b3cc656770)
 
 
 ## Tecnologias Utilizadas
