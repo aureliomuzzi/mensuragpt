@@ -19,7 +19,7 @@ class CreateGabaritosTable extends Migration
             $table->string('resposta_correta',  1); //A, B ou C
             $table->timestamps();
 
-            $table->foreign('questao_id')->references('id')->on('gestoes');
+            $table->foreign('questao_id')->references('id')->on('questoes');
         });
     }
 

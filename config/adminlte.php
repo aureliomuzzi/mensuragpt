@@ -299,6 +299,16 @@ return [
             'text'        => 'Cadastro de Questões',
             'url'         => 'questions',
             'icon'        => 'fas fa-book',
+        ],
+        [
+            'text'        => 'Cadastro de Alternativas',
+            'url'         => 'alternatives',
+            'icon'        => 'fas fa-book',
+        ],  
+        [
+            'text'        => 'Cadastro de Gabaritos',
+            'url'         => 'templates',
+            'icon'        => 'fas fa-book',
         ],  
     ],
 
