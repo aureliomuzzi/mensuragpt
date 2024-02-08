@@ -29,8 +29,8 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    {!! Form::label('enunciado', 'Enunciado da Questão') !!} <span class="obrigatorio">*</span>
-                                    {!! Form::textarea('enunciado', null, ['class' => 'form-control', 'required', 'placeholder' => 'Enunciado da Questão']) !!}
+                                    <label for="enunciado">Enunciado da Questão</label>
+                                    <input type="enunciado" id="enunciado" name="enunciado" class="form-control" value="{{ isset($questoes) ? $questoes->enunciado : null }}">
                                 </div>
                             </div>
                             <!-- /.card-body -->

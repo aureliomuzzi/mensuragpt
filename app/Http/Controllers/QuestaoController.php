@@ -67,9 +67,9 @@ class QuestaoController extends Controller
      */
     public function edit($id)
     {
-        $questao = Questios::find($id);
+        $questao = Questions::find($id);
         return view('questoes.form', [
-            'questao' => $questao,
+            'questoes' => $questao,
         ]);
     }
 
@@ -103,7 +103,7 @@ class QuestaoController extends Controller
      */
     public function destroy($id)
     {
-        $questao = Questios::find($id);
+        $questao = Questions::find($id);
         $questao->delete();
         return redirect('/questoes')->with(['tipo'=>'success', 'mensagem'=>'Registro excluído com sucesso!']);
     }
