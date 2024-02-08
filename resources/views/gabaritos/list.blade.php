@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
-@section('title', 'Enunciado de Questões')
+@section('title', 'Gabarito de Questões')
 
 
 
 @section('content_header')
-    <h1 class="m-0 text-dark"><i class="fas fa-user-circle"></i>  Enunciado de Questões </h1>
+    <h1 class="m-0 text-dark"><i class="fas fa-user-circle"></i>  Gabarito de Questões </h1>
 @stop
 
 @section('content')

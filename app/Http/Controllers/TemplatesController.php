@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Templates;
 use Illuminate\Http\Request;
+use App\DataTables\TemplatesDataTable;
+use App\Models\Questions;
 
 class TemplatesController extends Controller
 {
@@ -12,9 +14,9 @@ class TemplatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TemplatesDataTable $dataTable)
     {
-        //
+        return $dataTable->render('gabaritos.list');
     }
 
     /**
@@ -24,7 +26,9 @@ class TemplatesController extends Controller
      */
     public function create()
     {
-        //
+        return view('gabaritos.form', [
+            'enunciado' => Questions::questoes(),
+        ]);
     }
 
     /**

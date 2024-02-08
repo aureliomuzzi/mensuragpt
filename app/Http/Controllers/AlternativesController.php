@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alternativas;
 use Illuminate\Http\Request;
 use App\DataTables\AlternativesDataTable;
+use App\Models\Questions;
 
 class AlternativesController extends Controller
 {
@@ -25,7 +26,9 @@ class AlternativesController extends Controller
      */
     public function create()
     {
-        //
+        return view('alternativas.form', [
+            'enunciado' => Questions::questoes(),
+        ]);
     }
 
     /**

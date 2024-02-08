@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Template;
+use App\Models\Templates;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -21,16 +21,32 @@ class TemplatesDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'templates.action');
+            ->editColumn('action', function($query) {
+                return '<a href="' . route('alternatives.edit', $query) . '" class="btn btn-primary btn-xs"><i class="fas fa-pen text-xs px-1"></i></a>
+                <a onclick="confirmarExclusao(this)" href="javascript:void(0)" data-rota="' . route('alternatives.destroy', $query->id) . '" class="btn btn-danger btn-xs"><i class="fas fa-trash text-xs px-1"></i></a>';
+            })
+            ->editColumn('questao_id', function($query) {
+                return $query->questao->enunciado;
+            })
+            ->editColumn('resposta_correta', function($query) {
+                return $query->resposta_correta;
+            })
+            ->editColumn('created_at', function($query) {
+                return $query->created_at->format("d/m/Y H:i");
+            })
+            ->editColumn('updated_at', function($query) {
+                return $query->updated_at->format("d/m/Y H:i");
+            })
+            ->rawColumns(['action']);
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Template $model
+     * @param \App\Models\Templates $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Template $model)
+    public function query(Templates $model)
     {
         return $model->newQuery();
     }
@@ -43,18 +59,21 @@ class TemplatesDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('templates-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+            ->setTableId('gabarito-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('Bfrtip')
+            ->orderBy(0)
+            ->buttons(
+                Button::make('excel')->text("<i class='fas fa-file-excel'></i> Exportar Excel"),
+                // Button::make('pdf')->text("<i class='fas fa-print'></i> Exportar PDF"),
+                Button::make('create')->text("<i class='fas fa-plus'></i> Novo Registro"),
+            )
+            ->parameters([
+                "language" => [
+                    "url" => "/js/translate_pt-br.json"
+                ]
+            ]);
     }
 
     /**
@@ -65,15 +84,9 @@ class TemplatesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('action')->title('Ações')->searchable(false)->orderable(false),
+            Column::make('questao_id')->title('Enunciado'),
+            Column::make('resposta_correta')->title('Resposta Correta'),
         ];
     }
 

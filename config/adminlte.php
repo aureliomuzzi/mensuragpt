@@ -303,12 +303,12 @@ return [
         [
             'text'        => 'Cadastro de Alternativas',
             'url'         => 'alternatives',
-            'icon'        => 'fas fa-book',
+            'icon'        => 'fas fa-address-card',
         ],  
         [
             'text'        => 'Cadastro de Gabaritos',
             'url'         => 'templates',
-            'icon'        => 'fas fa-book',
+            'icon'        => 'fas fa-sd-card',
         ],  
     ],
 

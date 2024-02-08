@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Questao;
+use App\Models\Questions;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -40,10 +40,10 @@ class QuestaoDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Questao $model
+     * @param \App\Models\Questions $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Questao $model)
+    public function query(Questions $model)
     {
         return $model->newQuery();
     }
@@ -56,7 +56,7 @@ class QuestaoDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('user-table')
+                    ->setTableId('questao-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Bfrtip')

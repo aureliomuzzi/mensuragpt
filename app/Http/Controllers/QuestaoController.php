@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Questao;
+use App\Models\Questions;
 use Illuminate\Http\Request;
 use App\DataTables\QuestaoDataTable;
 
@@ -39,7 +39,7 @@ class QuestaoController extends Controller
         try {
             $dados = $request->all();
 
-            Questao::create($dados);
+            Questions::create($dados);
 
             return redirect('/questoes')->with(['tipo'=>'success', 'mensagem'=>'Registro criado com sucesso!']);
         } catch (Exception $exception) {
@@ -51,10 +51,10 @@ class QuestaoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Questao  $questao
+     * @param  \App\Models\Questions  $questao
      * @return \Illuminate\Http\Response
      */
-    public function show(Questao $questao)
+    public function show(Questions $questao)
     {
         //
     }
@@ -62,12 +62,12 @@ class QuestaoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Questao  $questao
+     * @param  \App\Models\Questions  $questao
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $questao = Questao::find($id);
+        $questao = Questios::find($id);
         return view('questoes.form', [
             'questao' => $questao,
         ]);
@@ -77,7 +77,7 @@ class QuestaoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Questao  $questao
+     * @param  \App\Models\Questions  $questao
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -85,7 +85,7 @@ class QuestaoController extends Controller
         try {
             $dados = $request->all();
 
-            $questao = Questao::find($id);
+            $questao = Questions::find($id);
 
             $questao->update($dados);
             return redirect('/questoes')->with(['tipo'=>'success', 'mensagem'=>'Registro atualizado com sucesso!']);
@@ -98,12 +98,12 @@ class QuestaoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Questao  $questao
+     * @param  \App\Models\Questions  $questao
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $questao = Questao::find($id);
+        $questao = Questios::find($id);
         $questao->delete();
         return redirect('/questoes')->with(['tipo'=>'success', 'mensagem'=>'Registro excluído com sucesso!']);
     }
