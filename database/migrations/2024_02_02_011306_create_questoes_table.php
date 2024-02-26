@@ -16,6 +16,11 @@ class CreateQuestoesTable extends Migration
         Schema::create('questoes', function (Blueprint $table) {
             $table->id();
             $table->text('enunciado');
+            $table->string('alternativa_A');
+            $table->string('alternativa_B');
+            $table->string('alternativa_C');
+            $table->string('alternativa_D');
+            $table->string('alternativa_E');
             $table->timestamps();
         });
     }

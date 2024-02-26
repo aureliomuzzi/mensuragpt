@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Categorias;
+use App\Models\Categoria;
 
 class CategoriaSeeder extends Seeder
 {
@@ -22,7 +22,6 @@ class CategoriaSeeder extends Seeder
             'Fisica',
             'Quimica',
             'Telecomunicacoes',
-            'Medicina',
             'Biologia',
             'Matematica',
             'Filosofia',
@@ -30,7 +29,7 @@ class CategoriaSeeder extends Seeder
         ];
 
         foreach ($categorias as $categoria) {
-            Categorias::firstOrCreate([
+            Categoria::firstOrCreate([
                 'categoria'=>$categoria,
             ]);
         }

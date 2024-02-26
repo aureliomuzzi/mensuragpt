@@ -301,11 +301,6 @@ return [
             'icon'        => 'fas fa-book',
         ],
         [
-            'text'        => 'Cadastro de Alternativas',
-            'url'         => 'alternativa',
-            'icon'        => 'fas fa-address-card',
-        ],  
-        [
             'text'        => 'Cadastro de Gabaritos',
             'url'         => 'gabarito',
             'icon'        => 'fas fa-sd-card',

@@ -31,11 +31,20 @@ class QuestaoDataTable extends DataTable
             ->editColumn('enunciado', function($query) {
                 return $query->enunciado;
             })
-            ->editColumn('created_at', function($query) {
-                return $query->created_at->format("d/m/Y H:i");
+            ->editColumn('alternativa_A', function($query) {
+                return $query->alternativa_A;
             })
-            ->editColumn('updated_at', function($query) {
-                return $query->updated_at->format("d/m/Y H:i");
+            ->editColumn('alternativa_B', function($query) {
+                return $query->alternativa_B;
+            })
+            ->editColumn('alternativa_C', function($query) {
+                return $query->alternativa_C;
+            })
+            ->editColumn('alternativa_D', function($query) {
+                return $query->alternativa_D;
+            })
+            ->editColumn('alternativa_E', function($query) {
+                return $query->alternativa_E;
             })
             ->rawColumns(['action']);
     }
@@ -85,8 +94,11 @@ class QuestaoDataTable extends DataTable
             Column::make('action')->title('Ações')->searchable(false)->orderable(false),
             Column::make('categoria_id')->title('Categoria'),
             Column::make('enunciado')->title('Enunciado'),
-            Column::make('created_at')->title('Cadastro')->addClass('text-center'),
-            Column::make('updated_at')->title('Atualizado')->addClass('text-center'),
+            Column::make('alternativa_A')->title('Alternativa A'),
+            Column::make('alternativa_B')->title('Alternativa B'),
+            Column::make('alternativa_C')->title('Alternativa C'),
+            Column::make('alternativa_D')->title('Alternativa D'),
+            Column::make('alternativa_E')->title('Alternativa E'),
         ];
     }
 

@@ -22,7 +22,7 @@
                 @endif
 
                 <div class="row">
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-6 col-md-12">
                         <div class="card card-info">
                             <div class="card-header">
                                 <h3 class="card-title">Cadastro de Questões</h3>
@@ -36,6 +36,38 @@
                                     <div class="form-group">
                                         {!! Form::label('enunciado', 'Enunciado') !!} <span class="obrigatorio">*</span>
                                         {!! Form::textarea('enunciado', null, ['class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Alternativas de Resposta</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        {!! Form::label('alternativa_A', 'Alternativa A') !!} <span class="obrigatorio">*</span>
+                                        {!! Form::text('alternativa_A', null, ['class' => 'form-control', 'required']) !!}
+                                    </div>
+                                    <div class="form-group">
+                                        {!! Form::label('alternativa_B', 'Alternativa B') !!} <span class="obrigatorio">*</span>
+                                        {!! Form::text('alternativa_B', null, ['class' => 'form-control', 'required']) !!}
+                                    </div>
+                                    <div class="form-group">
+                                        {!! Form::label('alternativa_C', 'Alternativa C') !!} <span class="obrigatorio">*</span>
+                                        {!! Form::text('alternativa_C', null, ['class' => 'form-control', 'required']) !!}
+                                    </div>
+                                    <div class="form-group">
+                                        {!! Form::label('alternativa_D', 'Alternativa D') !!} <span class="obrigatorio">*</span>
+                                        {!! Form::text('alternativa_D', null, ['class' => 'form-control', 'required']) !!}
+                                    </div>
+                                    <div class="form-group">
+                                        {!! Form::label('alternativa_E', 'Alternativa E') !!} <span class="obrigatorio">*</span>
+                                        {!! Form::text('alternativa_E', null, ['class' => 'form-control', 'required']) !!}
                                     </div>
                                 </div>
                             </div>
