@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Questions;
+use App\Models\Questao;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -22,11 +22,11 @@ class QuestaoDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->editColumn('action', function($query) {
-                return '<a href="' . route('questions.edit', $query) . '" class="btn btn-primary btn-xs"><i class="fas fa-pen text-xs px-1"></i></a>
-                <a onclick="confirmarExclusao(this)" href="javascript:void(0)" data-rota="' . route('questions.destroy', $query->id) . '" class="btn btn-danger btn-xs"><i class="fas fa-trash text-xs px-1"></i></a>';
+                return '<a href="' . route('questao.edit', $query) . '" class="btn btn-primary btn-xs"><i class="fas fa-pen text-xs px-1"></i></a>
+                <a onclick="confirmarExclusao(this)" href="javascript:void(0)" data-rota="' . route('questao.destroy', $query->id) . '" class="btn btn-danger btn-xs"><i class="fas fa-trash text-xs px-1"></i></a>';
             })
             ->editColumn('categoria_id', function($query) {
-                return $query->categoria_id;
+                return $query->categoria->categoria;
             })
             ->editColumn('enunciado', function($query) {
                 return $query->enunciado;
@@ -46,7 +46,7 @@ class QuestaoDataTable extends DataTable
      * @param \App\Models\Questions $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Questions $model)
+    public function query(Questao $model)
     {
         return $model->newQuery();
     }

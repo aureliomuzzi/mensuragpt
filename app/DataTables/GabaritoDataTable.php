@@ -2,14 +2,14 @@
 
 namespace App\DataTables;
 
-use App\Models\Alternatives;
+use App\Models\Gabarito;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class AlternativesDataTable extends DataTable
+class GabaritoDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -22,26 +22,14 @@ class AlternativesDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->editColumn('action', function($query) {
-                return '<a href="' . route('alternatives.edit', $query) . '" class="btn btn-primary btn-xs"><i class="fas fa-pen text-xs px-1"></i></a>
-                <a onclick="confirmarExclusao(this)" href="javascript:void(0)" data-rota="' . route('alternatives.destroy', $query->id) . '" class="btn btn-danger btn-xs"><i class="fas fa-trash text-xs px-1"></i></a>';
+                return '<a href="' . route('gabarito.edit', $query) . '" class="btn btn-primary btn-xs"><i class="fas fa-pen text-xs px-1"></i></a>
+                <a onclick="confirmarExclusao(this)" href="javascript:void(0)" data-rota="' . route('gabarito.destroy', $query->id) . '" class="btn btn-danger btn-xs"><i class="fas fa-trash text-xs px-1"></i></a>';
             })
             ->editColumn('questao_id', function($query) {
                 return $query->questao->enunciado;
             })
-            ->editColumn('alternativa_A', function($query) {
-                return $query->alternativa_A;
-            })
-            ->editColumn('alternativa_B', function($query) {
-                return $query->alternativa_B;
-            })
-            ->editColumn('alternativa_C', function($query) {
-                return $query->alternativa_C;
-            })
-            ->editColumn('alternativa_D', function($query) {
-                return $query->alternativa_D;
-            })
-            ->editColumn('alternativa_E', function($query) {
-                return $query->alternativa_E;
+            ->editColumn('resposta_correta', function($query) {
+                return $query->resposta_correta;
             })
             ->editColumn('created_at', function($query) {
                 return $query->created_at->format("d/m/Y H:i");
@@ -55,10 +43,10 @@ class AlternativesDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Alternatives $model
+     * @param \App\Models\Templates $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Alternatives $model)
+    public function query(Gabarito $model)
     {
         return $model->newQuery();
     }
@@ -71,7 +59,7 @@ class AlternativesDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('alternativa-table')
+            ->setTableId('gabarito-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Bfrtip')
@@ -98,11 +86,7 @@ class AlternativesDataTable extends DataTable
         return [
             Column::make('action')->title('Ações')->searchable(false)->orderable(false),
             Column::make('questao_id')->title('Enunciado'),
-            Column::make('alternativa_A')->title('Alternativa A'),
-            Column::make('alternativa_B')->title('Alternativa B'),
-            Column::make('alternativa_C')->title('Alternativa C'),
-            Column::make('alternativa_D')->title('Alternativa D'),
-            Column::make('alternativa_E')->title('Alternativa E'),
+            Column::make('resposta_correta')->title('Resposta Correta'),
         ];
     }
 
@@ -113,6 +97,6 @@ class AlternativesDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Alternatives_' . date('YmdHis');
+        return 'Templates_' . date('YmdHis');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Questions extends Model
+class Questao extends Model
 {
     use HasFactory;
 
@@ -14,18 +14,18 @@ class Questions extends Model
    
     public static function questoes()
     {
-        $enunciado = Questions::all();
+        $enunciado = Questao::get()->pluck('enunciado', 'id');
         return $enunciado;
     }
 
     public function categoria()
     {
-        return $this->belongsTo(Categorias::class);
+        return $this->belongsTo(Categoria::class);
     }
 
     public static function categorias()
     {
-        $categorias = Categorias::get()->pluck('categoria', 'id');
+        $categorias = Categoria::get()->pluck('categoria', 'id');
         return $categorias;
     }
 

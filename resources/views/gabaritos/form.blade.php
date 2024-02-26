@@ -16,9 +16,9 @@
                 @include('includes.alerts')
 
                 @if (!isset($gabaritos))
-	    			{!! Form::open(['url' => route('templates.store'), 'files' => true]) !!}
+	    			{!! Form::open(['url' => route('gabarito.store'), 'files' => true]) !!}
                 @else
-                    {!! Form::model($gabaritos, ['route' => ['templates.update', $gabaritos->id], 'method' => 'PUT', 'files' => true]) !!}
+                    {!! Form::model($gabaritos, ['route' => ['gabarito.update', $gabaritos->id], 'method' => 'PUT', 'files' => true]) !!}
                 @endif
 
                 <div class="row">
@@ -46,7 +46,7 @@
 
                 <div class="mt-5">
                     <button type="submit" class="btn btn-outline-success"><i class="fas fa-save"></i> Salvar</button>
-                    <a href="{{ route('templates.index') }}" class="btn btn-outline-danger"><i class="far fa-times-circle"></i> Cancelar</a>
+                    <a href="{{ route('gabarito.index') }}" class="btn btn-outline-danger"><i class="far fa-times-circle"></i> Cancelar</a>
                 </div>
 
                 {!! Form::close() !!}

@@ -297,17 +297,17 @@ return [
         ],
         [
             'text'        => 'Cadastro de Questões',
-            'url'         => 'questions',
+            'url'         => 'questao',
             'icon'        => 'fas fa-book',
         ],
         [
             'text'        => 'Cadastro de Alternativas',
-            'url'         => 'alternatives',
+            'url'         => 'alternativa',
             'icon'        => 'fas fa-address-card',
         ],  
         [
             'text'        => 'Cadastro de Gabaritos',
-            'url'         => 'templates',
+            'url'         => 'gabarito',
             'icon'        => 'fas fa-sd-card',
         ],  
     ],

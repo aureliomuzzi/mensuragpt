@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alternatives;
+use App\Models\Alternativa;
 use Illuminate\Http\Request;
-use App\DataTables\AlternativesDataTable;
-use App\Models\Questions;
+use App\DataTables\AlternativaDataTable;
+use App\Models\Questao;
 
-class AlternativesController extends Controller
+class AlternativaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(AlternativesDataTable $dataTable)
+    public function index(AlternativaDataTable $dataTable)
     {
         return $dataTable->render('alternativas.list');
     }
@@ -27,7 +27,7 @@ class AlternativesController extends Controller
     public function create()
     {
         return view('alternativas.form', [
-            'enunciados' => Questions::questoes()->pluck('enunciado', 'id'),
+            'enunciados' => Questao::questoes()->pluck('enunciado', 'id'),
         ]);
     }
 
@@ -42,9 +42,9 @@ class AlternativesController extends Controller
         try {
             $dados = $request->all();
 
-            Alternatives::create($dados);
+            Alternativa::create($dados);
 
-            return redirect('/alternatives')->with(['tipo'=>'success', 'mensagem'=>'Registro criado com sucesso!']);
+            return redirect('/alternativa')->with(['tipo'=>'success', 'mensagem'=>'Registro criado com sucesso!']);
         } catch (Exception $exception) {
             Log::error($exception);
             return redirect()->back()->withErrors(['tipo'=>'danger', 'mensagem'=>'Erro ao realizar operação.']);
@@ -70,11 +70,10 @@ class AlternativesController extends Controller
      */
     public function edit($id)
     {
-        $alternativa = Alternatives::find($id);
-        $enunciados = Questions::questoes()->pluck('enunciado', 'id');
+        $alternativa = Alternativa::find($id);
         return view('alternativas.form', [
-            'enunciados' => $alternativa,
-            'enunciados' => $enunciados,
+            'alternativa' => $alternativa,
+            'questoes' => Questao::questoes(),
         ]);
     }
 

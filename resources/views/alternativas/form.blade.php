@@ -16,9 +16,9 @@
                 @include('includes.alerts')
 
                 @if (!isset($alternativas))
-	    			{!! Form::open(['url' => route('alternatives.store'), 'files' => true]) !!}
+	    			{!! Form::open(['url' => route('alternativa.store'), 'files' => true]) !!}
                 @else
-                    {!! Form::model($alternativas, ['route' => ['alternatives.update', $alternativas->id], 'method' => 'PUT', 'files' => true]) !!}
+                    {!! Form::model($alternativas, ['route' => ['alternativa.update', $alternativas->id], 'method' => 'PUT', 'files' => true]) !!}
                 @endif
 
                 <div class="row">
@@ -29,13 +29,8 @@
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group">
-                                    <label for="questao_id">Questão</label> <span class="obrigatorio">*</span>
-                                    <select name="questao_id" id="questao_id" class="form-control" required>
-                                        <option value="" disabled selected>Informe a Questão</option>
-                                        <?php foreach($enunciados as $key => $value): ?>
-                                            <option value="<?= $key ?>"><?= $value ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                    {!! Form::label('questao_id', 'Questao') !!} <span class="obrigatorio">*</span>
+                                    {!! Form::select('questao_id', $questoes, null, ['class' => 'form-control', 'required', 'placeholder' => 'Informe a Questão']) !!}
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
@@ -75,7 +70,7 @@
 
                 <div class="mt-5">
                     <button type="submit" class="btn btn-outline-success"><i class="fas fa-save"></i> Salvar</button>
-                    <a href="{{ route('alternatives.index') }}" class="btn btn-outline-danger"><i class="far fa-times-circle"></i> Cancelar</a>
+                    <a href="{{ route('alternativa.index') }}" class="btn btn-outline-danger"><i class="far fa-times-circle"></i> Cancelar</a>
                 </div>
 
                 {!! Form::close() !!}

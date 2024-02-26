@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Templates;
+use App\Models\Gabarito;
 use Illuminate\Http\Request;
-use App\DataTables\TemplatesDataTable;
-use App\Models\Questions;
+use App\DataTables\GabaritoDataTable;
+use App\Models\Questao;
 
-class TemplatesController extends Controller
+class GabaritoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(TemplatesDataTable $dataTable)
+    public function index(GabaritoDataTable $dataTable)
     {
         return $dataTable->render('gabaritos.list');
     }
@@ -27,7 +27,7 @@ class TemplatesController extends Controller
     public function create()
     {
         return view('gabaritos.form', [
-            'enunciado' => Questions::questoes(),
+            'enunciado' => Questao::questoes(),
         ]);
     }
 

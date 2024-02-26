@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Questions;
+use App\Models\Questao;
 use Illuminate\Http\Request;
 use App\DataTables\QuestaoDataTable;
 
@@ -26,7 +26,7 @@ class QuestaoController extends Controller
     public function create()
     {
         return view('questoes.form',[
-            'categorias' => Questions::categorias(),
+            'categorias' => Questao::categorias(),
         ]);
     }
 
@@ -41,9 +41,9 @@ class QuestaoController extends Controller
         try {
             $dados = $request->all();
 
-            Questions::create($dados);
+            Questao::create($dados);
 
-            return redirect('/questions')->with(['tipo'=>'success', 'mensagem'=>'Registro criado com sucesso!']);
+            return redirect('/questao')->with(['tipo'=>'success', 'mensagem'=>'Registro criado com sucesso!']);
         } catch (Exception $exception) {
             Log::error($exception);
             return redirect()->back()->withErrors(['tipo'=>'danger', 'mensagem'=>'Erro ao realizar operação.']);
@@ -69,9 +69,10 @@ class QuestaoController extends Controller
      */
     public function edit($id)
     {
-        $questao = Questions::find($id);
+        $questao = Questao::find($id);
         return view('questoes.form', [
             'questoes' => $questao,
+            'categorias' => Questao::categorias(),
         ]);
     }
 
@@ -87,10 +88,10 @@ class QuestaoController extends Controller
         try {
             $dados = $request->all();
 
-            $questao = Questions::find($id);
+            $questao = Questao::find($id);
 
             $questao->update($dados);
-            return redirect('/questoes')->with(['tipo'=>'success', 'mensagem'=>'Registro atualizado com sucesso!']);
+            return redirect('/questao')->with(['tipo'=>'success', 'mensagem'=>'Registro atualizado com sucesso!']);
         } catch (Exception $exception) {
             Log::error($exception);
             return redirect()->back()->withErrors(['tipo'=>'danger', 'mensagem'=>'Erro ao realizar operação.']);
@@ -105,8 +106,8 @@ class QuestaoController extends Controller
      */
     public function destroy($id)
     {
-        $questao = Questions::find($id);
+        $questao = Questao::find($id);
         $questao->delete();
-        return redirect('/questoes')->with(['tipo'=>'success', 'mensagem'=>'Registro excluído com sucesso!']);
+        return redirect('/questao')->with(['tipo'=>'success', 'mensagem'=>'Registro excluído com sucesso!']);
     }
 }

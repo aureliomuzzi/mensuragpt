@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categorias extends Model
+class Categoria extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class Categorias extends Model
 
     public static function categorias()
     {
-        $categoria = Categorias::all();
+        $categoria = Categoria::all();
         return $categoria;
     }
 }
