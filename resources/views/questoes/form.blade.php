@@ -28,9 +28,20 @@
                                 <h3 class="card-title">Cadastro de Questões</h3>
                             </div>
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="enunciado">Enunciado da Questão</label>
-                                    <input type="enunciado" id="enunciado" name="enunciado" class="form-control" value="{{ isset($questoes) ? $questoes->enunciado : null }}">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <label for="categoria_id">Categoria</label> <span class="obrigatorio">*</span>
+                                        <select name="categoria_id" id="categoria_id" class="form-control" required>
+                                            <option value="" disabled selected>Informe a Categoria</option>
+                                            <?php foreach($categorias as $key => $value): ?>
+                                                <option value="<?= $key ?>"><?= $value ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="enunciado">Enunciado da Questão</label>
+                                        <textarea type="enunciado" id="enunciado" name="enunciado" rows="5" cols="33" class="form-control" value="{{ isset($questoes) ? $questoes->enunciado : null }}"> </textarea>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-body -->

@@ -29,8 +29,13 @@
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group">
-                                    {!! Form::label('questao_id', 'Enunciado') !!} <span class="obrigatorio">*</span>
-                                    {!! Form::select('questao_id', $enunciado, null, ['class' => 'form-control', 'required', 'placeholder' => 'Selecione a Questão']) !!}
+                                    <label for="questao_id">Questão</label> <span class="obrigatorio">*</span>
+                                    <select name="questao_id" id="questao_id" class="form-control" required>
+                                        <option value="" disabled selected>Informe a Questão</option>
+                                        <?php foreach($enunciados as $key => $value): ?>
+                                            <option value="<?= $key ?>"><?= $value ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">

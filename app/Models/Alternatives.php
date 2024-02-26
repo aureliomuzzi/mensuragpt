@@ -12,4 +12,14 @@ class Alternatives extends Model
     public $table = 'alternativas';
     public $guarded = ['id', 'created_at', 'updated_at'];
     
+    public function questao()
+    {
+        return $this->belongsTo(Questions::class);
+    }
+
+    public static function questoes()
+    {
+        $questoes = Questions::get();
+        return $questoes;
+    }
 }

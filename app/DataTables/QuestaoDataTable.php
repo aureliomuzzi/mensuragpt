@@ -25,6 +25,9 @@ class QuestaoDataTable extends DataTable
                 return '<a href="' . route('questions.edit', $query) . '" class="btn btn-primary btn-xs"><i class="fas fa-pen text-xs px-1"></i></a>
                 <a onclick="confirmarExclusao(this)" href="javascript:void(0)" data-rota="' . route('questions.destroy', $query->id) . '" class="btn btn-danger btn-xs"><i class="fas fa-trash text-xs px-1"></i></a>';
             })
+            ->editColumn('categoria_id', function($query) {
+                return $query->categoria_id;
+            })
             ->editColumn('enunciado', function($query) {
                 return $query->enunciado;
             })
@@ -80,6 +83,7 @@ class QuestaoDataTable extends DataTable
     {
         return [
             Column::make('action')->title('Ações')->searchable(false)->orderable(false),
+            Column::make('categoria_id')->title('Categoria'),
             Column::make('enunciado')->title('Enunciado'),
             Column::make('created_at')->title('Cadastro')->addClass('text-center'),
             Column::make('updated_at')->title('Atualizado')->addClass('text-center'),

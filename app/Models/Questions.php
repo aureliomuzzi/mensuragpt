@@ -18,4 +18,15 @@ class Questions extends Model
         return $enunciado;
     }
 
+    public function categoria()
+    {
+        return $this->belongsTo(Categorias::class);
+    }
+
+    public static function categorias()
+    {
+        $categorias = Categorias::get()->pluck('categoria', 'id');
+        return $categorias;
+    }
+
 }

@@ -25,7 +25,9 @@ class QuestaoController extends Controller
      */
     public function create()
     {
-        return view('questoes.form');
+        return view('questoes.form',[
+            'categorias' => Questions::categorias(),
+        ]);
     }
 
     /**
@@ -41,7 +43,7 @@ class QuestaoController extends Controller
 
             Questions::create($dados);
 
-            return redirect('/questoes')->with(['tipo'=>'success', 'mensagem'=>'Registro criado com sucesso!']);
+            return redirect('/questions')->with(['tipo'=>'success', 'mensagem'=>'Registro criado com sucesso!']);
         } catch (Exception $exception) {
             Log::error($exception);
             return redirect()->back()->withErrors(['tipo'=>'danger', 'mensagem'=>'Erro ao realizar operação.']);

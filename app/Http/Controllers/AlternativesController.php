@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alternativas;
+use App\Models\Alternatives;
 use Illuminate\Http\Request;
 use App\DataTables\AlternativesDataTable;
 use App\Models\Questions;
@@ -27,7 +27,7 @@ class AlternativesController extends Controller
     public function create()
     {
         return view('alternativas.form', [
-            'enunciado' => Questions::questoes(),
+            'enunciados' => Questions::questoes()->pluck('enunciado', 'id'),
         ]);
     }
 
@@ -39,7 +39,16 @@ class AlternativesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $dados = $request->all();
+
+            Alternatives::create($dados);
+
+            return redirect('/alternatives')->with(['tipo'=>'success', 'mensagem'=>'Registro criado com sucesso!']);
+        } catch (Exception $exception) {
+            Log::error($exception);
+            return redirect()->back()->withErrors(['tipo'=>'danger', 'mensagem'=>'Erro ao realizar operação.']);
+        }
     }
 
     /**
@@ -59,9 +68,14 @@ class AlternativesController extends Controller
      * @param  \App\Models\Alternatives  $alternatives
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alternatives $alternatives)
+    public function edit($id)
     {
-        //
+        $alternativa = Alternatives::find($id);
+        $enunciados = Questions::questoes()->pluck('enunciado', 'id');
+        return view('alternativas.form', [
+            'enunciados' => $alternativa,
+            'enunciados' => $enunciados,
+        ]);
     }
 
     /**

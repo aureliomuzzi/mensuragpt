@@ -5,14 +5,14 @@
 
 
 @section('content_header')
-<h1 class="m-0 text-dark"><i class="fas fa-user"></i>  Lista de Usuários </h1>
+<h1 class="m-0 text-dark"><i class="fas fa-user"></i>  Lista de PESSOAS </h1>
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">
-            Lista de Usuários do Sistema
+            Lista de PESSOAS Cadastradas no Sistema
         </h3>
     </div>
 
